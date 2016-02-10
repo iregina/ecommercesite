@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
+ protect_from_forgery
  helper SessionsHelper
 
  def create #post request
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to @user
+      login(@user)
+      redirect_to items_path
     else
       render 'new'
     end
@@ -39,7 +41,7 @@ end
 
 private
 def user_params
-  params.require(:user).permit(:name, :email, :password_hash)
+  params.require(:user).permit(:username, :email, :password_hash)
 end
 
 #user_id???

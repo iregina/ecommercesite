@@ -1,25 +1,12 @@
-%h1 Users#new
-%p Find me in app/views/users/new.html.haml
-
-
 %h1 Create A New User Account
-%form#new_user{:action => "/users", :method => "POST"}
-  %label{:for => "username"}
-    Username:
-    %br
-      %input{:name => "username", :placeholder => "Please enter your username", :type => "text"}
-  %br
-    %br
-      %label{:for => "email"}
-        Email:
-        %br
-          %input{:name => "email", :placeholder => "Please enter your email", :type => "email"}
-      %br
-        %br
-          %label{:for => "password"}
-            Password:
-            %br
-              %input{:name => "password", :placeholder => "Password", :type => "password"}
-          %br
-            %br
-              %input{:type => "submit", :value => "Create New User!!"}
+= form_for @user, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
+  = f.label :username, "Username"
+  = f.text_field :username
+  = f.label :email, "E-mail"
+  = f.email_field :email
+  = f.label :password_hash, "Password"
+  = f.password_field :password_hash
+
+  = f.submit "Create User"
+
+

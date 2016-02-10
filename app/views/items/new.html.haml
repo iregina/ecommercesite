@@ -4,7 +4,7 @@
 
   = form_for @item, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
     = f.label :title
-    = f.text_field :title
+    = f.text_field :title, :placeholder => "placeholder text"
     = f.label :price
     = f.text_field :price
     = f.label :description
