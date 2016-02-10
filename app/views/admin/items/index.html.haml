@@ -1,0 +1,24 @@
+.container
+  %h1.text-center Atelier Noveau Admin Inventory
+  = if flash[:notice]
+    %div #{flash[:notice]}
+  .table-responsive
+    %table.table
+      %thead
+        %tr.header-row
+          %th.col-md-2 Item Title
+          %th.col-md-6 Item Description
+          %th.col-md-1 Price
+          %th.col-md-1 Quantity
+          %th.col-md-1
+          %th.col-md-1
+      - @items.each do |item|
+        %tr
+          %td= item.title
+          %td= item.description
+          %td.price $ #{item.price}
+          %td.text-center #{item.quantity}
+          %td
+            = link_to 'Edit item', edit_admin_item_path(item.id), :class => "btn btn-primary"
+          %td
+            = link_to 'Delete item', admin_item_path(item.id), method: :delete, :class => "btn btn-danger"

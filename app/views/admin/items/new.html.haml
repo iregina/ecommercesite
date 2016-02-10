@@ -1,0 +1,19 @@
+%div.container
+  %h1 Kind Sir/Madame? What bid you parting with?
+  = if flash[:error]
+    %div #{flash[:error]}
+
+  = form_for @item, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
+    %fieldset.form-group
+      = f.label :title
+      = f.text_field :title
+    %fieldset.form-group
+      = f.label :price
+      = f.text_field :price
+    %fieldset.form-group
+      = f.label :description
+      = f.text_area(:description, placeholder: "Please enter your item details", size: "24x6", class: "form-control")
+    %fieldset.form-group
+      = f.label :quantity
+      = f.number_field :quantity
+    = f.submit "Submit Your Item For Sale"

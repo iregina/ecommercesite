@@ -1,0 +1,53 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,500,600,700,900);
+
+* {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+}
+
+.row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.item-box {
+  border: solid 1px gray;
+  height: 250px;
+  padding: 10px;
+}
+
+div.item-box div {
+  margin: 5px;
+}
+
+.price {
+  font-size: 1.2em;
+}
+
+.view-item {
+  margin-top: 10px;
+}
+
+/* admin items index page */
+.header-row th {
+  font-weight: 600;
+}
+
+
+
+

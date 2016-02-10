@@ -1,0 +1,20 @@
+.container
+  .row.text-center
+    %h1 Atelier Noveau
+  - @items.each_slice(3) do |slice|
+    .row
+      - slice.each do |item|
+        .col-md-4
+          .item-box
+            %div
+              %strong= item.title
+            %div= item.description
+            %div Quantity in Stock: #{item.quantity}
+            %div.price $#{item.price}
+            = link_to 'View item', item_path(item.id), :class => "btn btn-default view-item"
+
+
+/ <div><strong><%= item.title %>
+
+
+

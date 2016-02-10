@@ -1,0 +1,13 @@
+ye%div.container
+  %h1 Items#edit
+  %p Find me in app/views/items/edit.html.haml
+
+
+  = form_for @item, url: {action: "update"}, html: {class:"update_item_form"} do |f|
+    = f.label :title
+    = f.text_field(:title, value: @item.title)
+    = f.label :price
+    = f.text_field(:price, value: @item.price)
+    = f.label :description
+    = f.text_area(:description, value: @item.description, size: "24x6")
+    = f.submit "Update Your Item"

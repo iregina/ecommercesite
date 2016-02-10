@@ -1,0 +1,12 @@
+%div.container
+  %h1 Items#new
+  %p Find me in app/views/items/new.html.haml
+
+  = form_for @item, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
+    = f.label :title
+    = f.text_field :title
+    = f.label :price
+    = f.text_field :price
+    = f.label :description
+    = f.text_area(:description, value: "Please enter your item details", size: "24x6")
+    = f.submit "Submit Your Item For Sale"
