@@ -8,10 +8,10 @@
 
 require 'faker'
 
-User.create!(name: 'John Doe', email: 'email@email.com', password_hash: '1234')
+User.create!(username: 'John Doe', email: 'email@email.com', password_hash: '1234')
 
 10.times do
-  User.create!(name: Faker::Name.name, email: Faker::Internet.email, password_hash: 'password')
+  User.create!(username: Faker::Name.name, email: Faker::Internet.email, password_hash: 'password')
 end
 
 20.times do

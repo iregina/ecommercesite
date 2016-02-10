@@ -7,5 +7,19 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
+%body
+  %nav
+    - if session[:id] != nil #logged_in?
+      %ul
+        %li
+          %form{:action => "/sessions", :method => "POST"}
+            %input{:name => "_method", :type => "hidden", :value => "DELETE"}
+              %input{:type => "submit", :value => "Log Out"}
+    - else
+      %ul
+        %li
+          %a{:href => "/sessions/new"} Log In
+        %li
+          %a{:href => "/users/new"} Register
+  %main
     = yield

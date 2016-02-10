@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+ helper SessionsHelper
+
  def create #post request
     @user = User.new(user_params)
 
