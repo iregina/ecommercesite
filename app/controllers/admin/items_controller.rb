@@ -21,6 +21,11 @@ class Admin::ItemsController < ApplicationController
 
   def new #get new request
     @item = Item.new
+    @categories = Category.all
+    @array =[]
+    @categories.each do | category|
+      @array << category.name
+    end
   end
 
   def edit #get request
