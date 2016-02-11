@@ -1,2 +1,12 @@
 %h1 Categories Index Page
-  - @categories.each do |category|
+%p Click on a category's title to see all of the Items in that Category:
+- @categories.each do |category|
+  - unless category.items.nil?
+    %h3= link_to category.name, category_path(category)
+    %h5= "Find something cool like this in the #{category.name} department"
+    = image_tag category.items.first.picture_link
+    = category.items.first.title
+    %br/
+    \--------------------------
+    %br/
+
