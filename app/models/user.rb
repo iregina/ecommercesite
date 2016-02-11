@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :username, :email, :password_hash, { :presence => true }
   validates :email, { :uniqueness => true }
 
-
+  include BCrypt
 
   def password
     @password ||= Password.new(password_hash)
@@ -16,9 +16,13 @@ class User < ActiveRecord::Base
     self.password_hash = @password
   end
 
-  def self.authenticate(email, password)
-    user = User.find_by(email: email)
-    return user if user && user.password == password
+  def authenticate(password)
+    self.password == password
   end
+
+  # def self.authenticate(email, password)
+  #   user = User.find_by(email: email)
+  #   return user if user && user.password == password
+  # end
 
 end
