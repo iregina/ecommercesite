@@ -1,10 +1,13 @@
 class CategoriesController < ApplicationController
 
+# display all the categories, clickable
   def index
-    @items = Item.all
+    @categories = Category.all
   end
 
+# display a single Catgory and all the Items associated
   def show
-    @item = Item.find(params[:id])
+    @category = Category.find(params[:id])
   end
+
 end
