@@ -1,0 +1,13 @@
+
+%h1 Single Category display page
+%p Look at all of the Items in this Category
+
+- @category.items.each do |item|
+  %h3= item.title
+  %p
+    %img{:alt => "Buy this thing", :height => "200", :src => item.picture_link, :width => "200"}
+  %p= "You can have this for the low, low price of #{item.price} dollars!"
+  %p= item.description
+  %br/
+  \--------------------------
+  %br/
