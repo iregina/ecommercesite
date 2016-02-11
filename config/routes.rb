@@ -30,7 +30,10 @@ Rails.application.routes.draw do
   get 'items/index'
   end
 
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
   # resources :sessions
   resources :users
   resources :items, :only => [:show, :index]

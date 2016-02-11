@@ -22,7 +22,6 @@ module SessionsHelper
 # clears just that session id
   def logout!
     session[:id] = nil
-    redirect '/'
   end
 
 end

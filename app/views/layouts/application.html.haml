@@ -12,9 +12,7 @@
     - if session[:id] != nil #logged_in?
       %ul
         %li
-          %form{:action => "/sessions", :method => "POST"}
-            %input{:name => "_method", :type => "hidden", :value => "DELETE"}
-              %input{:type => "submit", :action => "/log_out", :value => "Log Out"}
+          = link_to "Log out", logout_path, method: :delete
     - else
       %ul
         %li
