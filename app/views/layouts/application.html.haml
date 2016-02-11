@@ -10,11 +10,11 @@
 %body
   %nav
     - if session[:id] != nil #logged_in?
-      %ul
+      %ul.nav.nav-pills.nav-stacked
         %li
           = link_to "Log out", logout_path, method: :delete
     - else
-      %ul
+      %ul.nav.nav-pills.nav-stacked
         %li
           %a{:href => "/sessions/new"} Log In
         %li

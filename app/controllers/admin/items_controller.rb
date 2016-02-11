@@ -1,8 +1,17 @@
 class Admin::ItemsController < ApplicationController
+
+  include ApplicationHelper
+# Still need this? On the chopping block:
   http_basic_authenticate_with name: "admin", password: "secret"
 
+# super janky check for admin status!
   def index
-    @items = Item.all
+    if is_admin?
+      @items = Item.all
+    else
+      flash[:error] = "Naughty boy! You don't have permission to do that!"
+      redirect_to '/'
+    end
   end
 
   def create #post request
@@ -20,7 +29,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new #get new request
-    @item = Item.new
+    if is_admin?
+      @item = Item.new
+    else
+      flash[:error] = "Naughty boy! You don't have permission to do that!"
+# refactor this to the Rails Way
+      redirect_to '/'
+    end
   end
 
   def edit #get request
@@ -30,6 +45,7 @@ class Admin::ItemsController < ApplicationController
   def update #put
     @item = Item.find(params[:id])
     if @item.update(item_params)
+# refactor this to the Rails Way
       redirect_to "/admin/items/#{@item.id}"
     else
       render 'edit'
