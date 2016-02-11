@@ -14,7 +14,7 @@
         %li
           %form{:action => "/sessions", :method => "POST"}
             %input{:name => "_method", :type => "hidden", :value => "DELETE"}
-              %input{:type => "submit", :value => "Log Out"}
+              %input{:type => "submit", :action => "/log_out", :value => "Log Out"}
     - else
       %ul
         %li

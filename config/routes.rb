@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   namespace :admin do
   post 'items/create'
   end
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
   get 'items/index'
   end
 
+  delete 'logout' => 'sessions#destroy'
+  # resources :sessions
   resources :users
   resources :items, :only => [:show, :index]
   namespace :admin do

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  protect_from_forgery
- helper SessionsHelper
+ include SessionsHelper
 
  def create #post request
     @user = User.new(user_params)
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       login(@user)
       redirect_to items_path
     else
+      flash[:error] = @user.errors.full_messages
       render 'new'
     end
   end
@@ -37,11 +38,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-end
 
-private
-def user_params
-  params.require(:user).permit(:username, :email, :password_hash)
-end
 
-#user_id???
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password_hash)
+  end
+
+end
