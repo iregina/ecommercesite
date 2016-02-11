@@ -1,13 +1,12 @@
-
-%h1 Create A New User Account
-= form_for @user, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
-  = f.label :username, "Username"
-  = f.text_field :username
-  = f.label :email, "E-mail"
-  = f.email_field :email
-  = f.label :password, "Password"
-  = f.password_field :password
-
-  = f.submit "Create User"
+%div.container
+	%h1 Create A New User Account
+	= form_for @user, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
+		= f.label :username, "Username"
+		= f.text_field :username, class: 'form-control'
+		= f.label :email, "E-mail"
+		= f.email_field :email, class: 'form-control'
+		= f.label :password, "Password"
+		= f.password_field :password, class: 'form-control'
+		= f.submit "Create User", class: "btn btn-primary"
 
 

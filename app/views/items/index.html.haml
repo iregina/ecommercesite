@@ -1,6 +1,7 @@
 .container
   .row.text-center
-    %h1 Atelier Noveau
+    %h1 Atelier Noveau Store
+    %a{:href => "/categories/"} See All Categories
   - @items.each_slice(3) do |slice|
     .row
       - slice.each do |item|
