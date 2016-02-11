@@ -11,27 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209231041) do
+ActiveRecord::Schema.define(version: 20160211033535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_items", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "item_id"
+  end
+
+  add_index "categories_items", ["category_id"], name: "index_categories_items_on_category_id", using: :btree
+  add_index "categories_items", ["item_id"], name: "index_categories_items_on_item_id", using: :btree
+
   create_table "items", force: :cascade do |t|
     t.string   "title"
-    t.decimal  "price",       precision: 8, scale: 2
+    t.decimal  "price",        precision: 8, scale: 2
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.integer  "quantity",                            default: 0
+    t.string   "picture_link",                         default: "http://s-media-cache-ak0.pinimg.com/236x/2f/d8/11/2fd811ff0cc63d7ced001f5c951d4298.jpg"
+    t.datetime "created_at",                                                                                                                              null: false
+    t.datetime "updated_at",                                                                                                                              null: false
+    t.integer  "quantity",                             default: 0
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
     t.string   "password_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "admin",         default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
 end
