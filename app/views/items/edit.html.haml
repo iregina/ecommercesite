@@ -10,4 +10,6 @@
     = f.text_field(:price, value: @item.price)
     = f.label :description
     = f.text_area(:description, value: @item.description, size: "24x6")
+    = f.label :quantity
+    = f.number_field :quantity, value: @item.quantity
     = f.submit "Update Your Item"

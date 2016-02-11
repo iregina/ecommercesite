@@ -4,6 +4,8 @@ class Item < ActiveRecord::Base
 
   validates :title, :price, :description, :quantity, { :presence => true }
   validates :quantity, :price, :numericality => { :greater_than_or_equal_to => 0}
+
+  accepts_nested_attributes_for :categories
   # validates :user_id, { :presence => true }
   # put this validation back in once we have a user
 end

@@ -13,4 +13,10 @@
     %fieldset.form-group
       = f.label :description
       = f.text_area(:description, value: @item.description, size: "24x6", class: "form-control")
+    %fieldset.form-group
+      = f.label :quantity
+      = f.number_field :quantity, class: 'form-control'
+    %fieldset.form-group
+      = f.label :categories
+      = f.select :categories, @array, :prompt => 'Select One'
     = f.submit(value: "Update Your Item", class: "btn btn-primary")

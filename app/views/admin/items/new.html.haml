@@ -18,5 +18,13 @@
       = f.number_field :quantity, class: 'form-control'
     %fieldset.form-group
       = f.label :categories
-      = f.select :categories, @array, :prompt => 'Select One'
+      = f.select :categories, @array, :prompt => 'Select One', :multiple => true, :size => 3
     = f.submit "Submit Your Item For Sale", class: "btn btn-primary"
+
+
+
+Item.new{"title"=>"Another item", "price"=>"2323", "description"=>"23232", "quantity"=>"34", "categories"=>{name:"Deep Web"}}
+
+Item.new{title: Another item", price: 2323", description: "23232", "quantity"=>"34", categories: [Category.find_or_create_by("name":"Deep Sea")]}
+
+Item.new(categories: [])

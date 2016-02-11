@@ -11,7 +11,6 @@ class Admin::ItemsController < ApplicationController
     # p item_params
 
     if @item.save
-      p @item
       redirect_to "/admin/items/#{@item.id}"
     else
       flash[:error] = @item.errors.full_messages.to_sentence
@@ -30,15 +29,23 @@ class Admin::ItemsController < ApplicationController
 
   def edit #get request
     @item = Item.find(params[:id])
+    @categories = Category.all
+    @array =[]
+    @categories.each do | category|
+      @array << category.name
+    end
   end
 
   def update #put
     @item = Item.find(params[:id])
+
     if @item.update(item_params)
-      redirect_to "/admin/items/#{@item.id}"
+      redirect_to @item
+      # make sure this works! reminder
     else
       render 'edit'
     end
+
   end
 
   def destroy #put
@@ -62,6 +69,6 @@ def item_params
   # p params
   # only takes in this specific paramater
   # if you p out params then makes item as the key item with has with all parameters (another hash)
-  params.require(:item).permit(:title, :price, :description, :user_id, :quantity)
+  params.require(:item).permit(:title, :price, :description, :user_id, :quantity, [:categories])
 end
 
