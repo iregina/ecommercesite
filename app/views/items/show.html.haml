@@ -3,12 +3,15 @@
   %h3
     Item For Sale: #{@item.title}
   %p
+    %img{:alt => "Buy this thing", :height => "200", :src => @item.picture_link, :width => "200"}
+  %p
     About: #{@item.description}
   %p
     Quantity in Stock: #{@item.quantity}
   %p.price
     $#{@item.price}
 
+= link_to 'Back to Home Page', items_path
 
 
 

@@ -5,9 +5,11 @@
 - @category.items.each do |item|
   %h3= item.title
   %p
-    %img{:alt => "Buy this thing", :height => "200", :src => item.picture_link, :width => "200"}
+    %img{:alt => "Buy this thing", :height => "200", :src => item.picture_link, :width => "200", :class => "img-circle"}
   %p= "You can have this for the low, low price of #{item.price} dollars!"
   %p= item.description
   %br/
   \--------------------------
   %br/
+
+= link_to 'Back to Categories', categories_path

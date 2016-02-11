@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+# Are lines 6-32 redundant with lines 43-44?
   namespace :admin do
   post 'items/create'
   end

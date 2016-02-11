@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
   end
 
 # display a single Catgory and all the Items associated
-# later: use partials for rendering
+# refactor with a partial to show Items
   def show
     @category = Category.find(params[:id])
   end
