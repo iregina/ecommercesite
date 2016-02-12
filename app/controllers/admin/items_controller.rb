@@ -14,7 +14,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       p @item
-# refactor to Rails Way?
+
       redirect_to "/admin/items/#{@item.id}"
     else
       flash[:error] = @item.errors.full_messages.to_sentence
