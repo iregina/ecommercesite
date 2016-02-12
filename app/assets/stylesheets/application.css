@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,500,600,700,900);
 
 * {
@@ -48,6 +49,19 @@ div.item-box div {
   font-weight: 600;
 }
 
+.img-circle {
+  background-color: #6bb9f0;
+}
 
+.nav {
 
+}
+
+.nav-pills {
+
+}
+
+.nav-stacked {
+
+}
 

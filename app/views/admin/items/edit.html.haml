@@ -1,6 +1,5 @@
 %div.container
   %h1 Items#edit
-  %p Find me in app/views/items/edit.html.haml
 
 
   = form_for @item, url: {action: "update"}, html: {class:"update_item_form col-md-6"} do |f|
@@ -14,3 +13,7 @@
       = f.label :description
       = f.text_area(:description, value: @item.description, size: "24x6", class: "form-control")
     = f.submit(value: "Update Your Item", class: "btn btn-primary")
+
+= link_to 'Back to Home Page', items_path
+%br/
+= link_to 'Return to Inventory mangement', admin_items_path

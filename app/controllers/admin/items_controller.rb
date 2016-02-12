@@ -1,5 +1,10 @@
 class Admin::ItemsController < ApplicationController
+
+  include ApplicationHelper
+# Still need this? On the chopping block:
   http_basic_authenticate_with name: "admin", password: "secret"
+
+  before_action :require_admin
 
   def index
     @items = Item.all
@@ -7,11 +12,9 @@ class Admin::ItemsController < ApplicationController
 
   def create #post request
     @item = Item.new(item_params)
-    # p @item
-    # p item_params
-
     if @item.save
       p @item
+# refactor to Rails Way?
       redirect_to "/admin/items/#{@item.id}"
     else
       flash[:error] = @item.errors.full_messages.to_sentence
@@ -30,6 +33,7 @@ class Admin::ItemsController < ApplicationController
   def update #put
     @item = Item.find(params[:id])
     if @item.update(item_params)
+# refactor this to the Rails Way
       redirect_to "/admin/items/#{@item.id}"
     else
       render 'edit'

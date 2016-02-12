@@ -7,20 +7,24 @@
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-%body
-  %nav
-    - if session[:id] != nil #logged_in?
-      %ul
-        %li
-          = link_to "Log out", logout_path, method: :delete
-    - else
-      %ul
-        %li
-          %a{:href => "/sessions/new"} Log In
-        %li
-          %a{:href => "/users/new"} Register
-  %div
-    - flash.each do |name, msg|
-      = content_tag :div, msg, class: name
-  %main
-    = yield
+  %body
+    %nav
+      - if session[:id] != nil #logged_in helper won't work here!
+        %ul.nav.nav-pills.nav-stacked
+          %li
+            = link_to "Log out", logout_path, method: :delete
+      - else
+        %ul.nav.nav-pills.nav-stacked
+          %li
+            %a{:href => "/sessions/new"} Log In
+          %li
+            %a{:href => "/users/new"} Register
+      - if session[:id] && session[:id] == 2 #so brittle! won't allow any other Admin with this check ...
+        %ul.nav.nav-pills.nav-stacked
+          %li
+            = link_to "Manage Inventory", admin_items_path
+    %div
+      - flash.each do |name, msg|
+        = content_tag :div, msg, class: name
+    %main
+      = yield

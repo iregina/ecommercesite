@@ -54,6 +54,12 @@ Category.create!(name: "Candy")
 
 end
 
+10.times do |i|
+  category = Category.find(i+1)
+  category.items << Item.find(rand(1...20))
+end
+
+
 
 
 

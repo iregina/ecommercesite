@@ -14,5 +14,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'pry-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+
 end
 

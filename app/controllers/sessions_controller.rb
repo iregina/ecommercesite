@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
- include SessionsHelper
+ include ApplicationHelper
 
 
   def new
@@ -8,18 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email])
-    p "------------"
-    p user
-    p "------------"
-    # p user.authenticate(params[:session][:password])
-    p "------------"
-    # p User.authenticate(user.email,user.password)
-    # p "------------"
     if user && user.authenticate(params[:session][:password])
-    # if user && User.authenticate(user.email,user.password)
-
-      # user.authenticate(params[:session][:password])
-      #
       flash[:success] = 'You logged in!'
       login(user)
       redirect_to root_url
