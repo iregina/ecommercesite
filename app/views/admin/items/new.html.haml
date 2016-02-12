@@ -1,23 +1,33 @@
 %div.container
-  %h1 Kind Sir/Madame? What bid you parting with?
+  %h1 Add a new item
   = if flash[:error]
     %div #{flash[:error]}
 
   = form_for @item, url: {action: "create"}, html: {class:"submit_item_form"} do |f|
     %fieldset.form-group
       = f.label :title
-      = f.text_field :title
+      = f.text_field :title, class: 'form-control'
     %fieldset.form-group
       = f.label :price
-      = f.text_field :price
+      = f.text_field :price, class: 'form-control'
     %fieldset.form-group
       = f.label :description
       = f.text_area(:description, placeholder: "Please enter your item details", size: "24x6", class: "form-control")
     %fieldset.form-group
       = f.label :quantity
-      = f.number_field :quantity
-    = f.submit "Submit Your Item For Sale"
+      = f.number_field :quantity, class: 'form-control'
+    %fieldset.form-group
+      %p.text-center= f.label :categories
+      - @categories.each do |category|
+        - if @item.has_category?(category)
+          %input{name: "category[#{category.id}]", type: "checkbox", value: "checked", checked: "" }
+        - else
+          %input{name: "category[#{category.id}]", type: "checkbox", value: "checked"}
+        = category.name
+    = f.submit "Submit Your Item For Sale", class: "btn btn-primary"
 
 = link_to 'Back to Home Page', items_path
 %br/
 = link_to 'Return to Inventory mangement', admin_items_path
+
+
