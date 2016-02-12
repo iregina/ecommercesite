@@ -5,6 +5,7 @@ RSpec.describe Admin::ItemsController, type: :controller do
 let(:item) { Item.create(title: 'car', price: 2000.00, description: 'lemon', user_id: 2, quantity: 1) }
 
 # log in Admin with this?
+# need to redo this?
   before :each do
     user = 'admin'
     pw = 'secret'

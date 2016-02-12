@@ -30,7 +30,7 @@ module ApplicationHelper
 
   def require_admin
     unless is_admin?
-      flash[:error] = "Naughty boy! You don't have permission to do that!"
+      flash[:error] = "Naughty child! You don't have permission to do that!"
       redirect_to '/'
     end
   end
