@@ -7,11 +7,11 @@ class Admin::ItemsController < ApplicationController
 
   def create #post request
     @item = Item.new(item_params)
-    # p @item
-    # p item_params
+    @categories = Category.all
 
     if @item.save
-      redirect_to "/admin/items/#{@item.id}"
+      @item.set_categories(params[:category]) if params[:category]
+      redirect_to @item
     else
       flash[:error] = @item.errors.full_messages.to_sentence
       render 'new'
@@ -21,19 +21,12 @@ class Admin::ItemsController < ApplicationController
   def new #get new request
     @item = Item.new
     @categories = Category.all
-    @array =[]
-    @categories.each do | category|
-      @array << category.name
-    end
   end
 
   def edit #get request
     @item = Item.find(params[:id])
     @categories = Category.all
     @array =[]
-    @categories.each do | category|
-      @array << category.name
-    end
   end
 
   def update #put
@@ -69,6 +62,6 @@ def item_params
   # p params
   # only takes in this specific paramater
   # if you p out params then makes item as the key item with has with all parameters (another hash)
-  params.require(:item).permit(:title, :price, :description, :user_id, :quantity, [:categories])
+  params.require(:item).permit(:title, :price, :description, :user_id, :quantity, :categories => [])
 end
 

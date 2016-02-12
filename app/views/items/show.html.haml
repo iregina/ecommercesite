@@ -6,6 +6,10 @@
     About: #{@item.description}
   %p
     Quantity in Stock: #{@item.quantity}
+  %p
+    Categories:
+    - @item.categories.each do |category|
+      = category.name
   %p.price
     $#{@item.price}
 

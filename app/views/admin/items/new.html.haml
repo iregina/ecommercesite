@@ -17,14 +17,14 @@
       = f.label :quantity
       = f.number_field :quantity, class: 'form-control'
     %fieldset.form-group
-      = f.label :categories
-      = f.select :categories, @array, :prompt => 'Select One', :multiple => true, :size => 3
+      %p.text-center= f.label :categories
+      - @categories.each do |category|
+        - if @item.has_category?(category)
+          %input{name: "category[#{category.id}]", type: "checkbox", value: "checked", checked: "" }
+        - else
+          %input{name: "category[#{category.id}]", type: "checkbox", value: "checked"}
+        = category.name
     = f.submit "Submit Your Item For Sale", class: "btn btn-primary"
 
 
 
-Item.new{"title"=>"Another item", "price"=>"2323", "description"=>"23232", "quantity"=>"34", "categories"=>{name:"Deep Web"}}
-
-Item.new{title: Another item", price: 2323", description: "23232", "quantity"=>"34", categories: [Category.find_or_create_by("name":"Deep Sea")]}
-
-Item.new(categories: [])
