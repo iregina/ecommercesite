@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
  protect_from_forgery
- include SessionsHelper
+ include ApplicationHelper
 
  def create #post request
     @user = User.new(user_params)
