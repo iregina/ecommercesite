@@ -28,5 +28,11 @@ module ApplicationHelper
     logged_in? && current_user.admin
   end
 
+  def require_admin
+    unless is_admin?
+      flash[:error] = "Naughty boy! You don't have permission to do that!"
+      redirect_to '/'
+    end
+  end
 
 end

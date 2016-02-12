@@ -4,23 +4,17 @@ class Admin::ItemsController < ApplicationController
 # Still need this? On the chopping block:
   http_basic_authenticate_with name: "admin", password: "secret"
 
-# super janky check for admin status!
+  before_action :require_admin
+
   def index
-    if is_admin?
-      @items = Item.all
-    else
-      flash[:error] = "Naughty boy! You don't have permission to do that!"
-      redirect_to '/'
-    end
+    @items = Item.all
   end
 
   def create #post request
     @item = Item.new(item_params)
-    # p @item
-    # p item_params
-
     if @item.save
       p @item
+# refactor to Rails Way?
       redirect_to "/admin/items/#{@item.id}"
     else
       flash[:error] = @item.errors.full_messages.to_sentence
@@ -29,13 +23,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new #get new request
-    if is_admin?
-      @item = Item.new
-    else
-      flash[:error] = "Naughty boy! You don't have permission to do that!"
-# refactor this to the Rails Way
-      redirect_to '/'
-    end
+    @item = Item.new
   end
 
   def edit #get request

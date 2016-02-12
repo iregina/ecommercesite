@@ -10,3 +10,7 @@
     $#{@item.price}
   = link_to 'Edit item', edit_admin_item_path, :class => "btn btn-primary"
   = link_to 'Delete item', admin_item_path, method: :delete, :class => "btn btn-danger"
+
+= link_to 'Back to Home Page', items_path
+%br/
+= link_to 'Return to Inventory mangement', admin_items_path
