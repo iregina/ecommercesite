@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     @order = current_shopping_cart
   end
 
+
 end
 
 

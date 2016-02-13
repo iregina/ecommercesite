@@ -14,8 +14,7 @@
       = category.name
   %p.price
     $#{@item.price}
-  %form{:action => "create"}
-    Quantity you want to order:
+  = form_for @purchased_item do |f|
     %input{:max => "#{@item.quantity}", :min => "1", :name => "quantity", :type => "number"}
     %input{:type => "hidden", :value => @item.id, :name => "item_id"}
       %input{:type => "submit", :value => 'Add to Cart'}

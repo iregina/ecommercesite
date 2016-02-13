@@ -7,12 +7,13 @@ class PurchasedItemsController < ApplicationController
   def create
     p params
     order = current_shopping_cart
-    purchase = Purchased_item.new(quantity: params[:quantity],
+    purchase = PurchasedItem.new(quantity: params[:quantity],
                         item_id: params[:item_id],
                         order_id: order.id)
     p purchase
     purchase.save
-    redirect_to "/"
+    flash[:success] = "You purchased an item!"
+    redirect_to "/orders/show"
   end
 
 end
