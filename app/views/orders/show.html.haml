@@ -1,8 +1,9 @@
 = link_to 'Back to Home Page', items_path
 
 %h1 This Is Your Stupendous Shopping Cart
-
+%h4 For:
 = @order.user.username
+%p **********************************
 
 - @order.purchased_items.each do |purchased_item|
   %p
@@ -16,8 +17,17 @@
       %p= link_to 'Remove all of this Item', purchased_item_path(purchased_item),
         method: :delete,
         data: { confirm: 'Are you sure?' }
+      %p ----------------------------------
 
+%p **********************************
 %p
   Your Total: #{@order.purchase_total}
 
-= link_to 'Edit the Shopping Cart', edit_order_path(@order)
+%p **********************************
+
+= link_to 'Checkout', checkout_path, method: 'PUT'
+
+%p **********************************
+
+
+= link_to 'Back to Home Page', items_path
