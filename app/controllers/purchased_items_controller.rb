@@ -4,6 +4,10 @@ class PurchasedItemsController < ApplicationController
   def show
   end
 
+  def edit
+    @purchased_item = PurchasedItem.find(params[:id])
+  end
+
   def create
     p params
     order = current_shopping_cart
@@ -15,5 +19,26 @@ class PurchasedItemsController < ApplicationController
     flash[:success] = "You purchased an item!"
     redirect_to "/orders/show"
   end
+
+  def update
+    @purchased_item = PurchasedItem.find(params[:id])
+    @order = @purchased_item.order
+    if @purchased_item.update(quantity: params[:quantity])
+      flash[:success] = "You updated the quantity of an item"
+      redirect_to order_path(@order)
+    else
+      render 'edit'
+    end
+
+  end
+
+
+  def destroy
+    @purchased_item = PurchasedItem.find(params[:id])
+    @order = @purchased_item.order
+    @purchased_item.destroy
+    redirect_to order_path(@order)
+  end
+
 
 end

@@ -1,3 +1,4 @@
+# Refactor notes: should all rouates exist for all of these resources?
 Rails.application.routes.draw do
 
   get 'sessions/new'
@@ -5,6 +6,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+
+  put "/checkout", to: "orders#checkout"
 
   resources :categories, :only => [:show, :index]
 

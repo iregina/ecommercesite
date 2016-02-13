@@ -1,0 +1,24 @@
+
+%h1 Alter the quantity of the Items you are going to buy
+
+%h4 (We hope you're adding more!)
+
+%div.container
+  %h3
+    Item to Edit: #{@purchased_item.item.title}
+  %p
+    %img{:alt => "Buy this thing", :height => "200", :src => @purchased_item.item.picture_link, :width => "200", :class => "img-circle"}
+  %p
+    About: #{@purchased_item.item.description}
+  %p
+    Quantity in Stock: #{@purchased_item.item.quantity}
+  %p
+    You current have #{@purchased_item.quantity} in your cart
+  %p.price
+    $#{@purchased_item.item.price}
+  = form_for @purchased_item do |f|
+    %input{:max => "#{@purchased_item.item.quantity}", :min => "1", :name => "quantity", :type => "number", :value => @purchased_item.quantity}
+    %input{:type => "hidden", :value => @purchased_item.id, :name => "purchased_item_id"}
+      %input{:type => "submit", :value => 'Update this Item'}
+
+
