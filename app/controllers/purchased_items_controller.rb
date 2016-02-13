@@ -24,6 +24,7 @@ class PurchasedItemsController < ApplicationController
     @purchased_item = PurchasedItem.find(params[:id])
     @order = @purchased_item.order
     if @purchased_item.update(quantity: params[:quantity])
+      flash[:success] = "You updated the quantity of an item"
       redirect_to order_path(@order)
     else
       render 'edit'

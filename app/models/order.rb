@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   def purchase_total
     total = 0
     self.purchased_items.each do |purchased_item|
-      total += purchased_item.item.price
+      total += (purchased_item.item.price * purchased_item.quantity)
     end
     total
   end
