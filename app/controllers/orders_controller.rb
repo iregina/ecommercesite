@@ -9,6 +9,9 @@ class OrdersController < ApplicationController
     @order = current_shopping_cart
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
 
 end
 

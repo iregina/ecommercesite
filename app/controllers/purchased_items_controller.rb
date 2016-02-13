@@ -16,4 +16,12 @@ class PurchasedItemsController < ApplicationController
     redirect_to "/orders/show"
   end
 
+  def destroy
+    @purchased_item = PurchasedItem.find(params[:id])
+    @order = @purchased_item.order
+    @purchased_item.destroy
+    redirect_to order_path(@order)
+  end
+
+
 end

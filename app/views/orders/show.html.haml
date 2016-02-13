@@ -12,3 +12,11 @@
         Quantity #{purchased_item.quantity}
       %p
         Price: #{purchased_item.item.price}
+      %p= link_to 'Remove all of this Item', purchased_item_path(purchased_item),
+        method: :delete,
+        data: { confirm: 'Are you sure?' }
+
+%p
+  Your Total: #{@order.purchase_total}
+
+= link_to 'Edit the Shopping Cart', edit_order_path(@order)
