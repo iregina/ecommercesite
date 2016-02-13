@@ -9,6 +9,11 @@
     = csrf_meta_tags
   %body
     %nav
+      %ul.nav.nav-pills.nav-stacked
+        %li
+          = link_to "Show all Items", items_path
+        %li
+          = link_to "Show all Categories", categories_path
       - if session[:id] != nil #logged_in helper won't work here!
         %ul.nav.nav-pills.nav-stacked
           %li
@@ -16,13 +21,16 @@
           %li
             %a{:href => "/orders/show"}
               %span.glyphicon.glyphicon-shopping-cart
+              %span Shopping Cart
+          %li
+            = link_to "Order History", orders_path
       - else
         %ul.nav.nav-pills.nav-stacked
           %li
             %a{:href => "/sessions/new"} Log In
           %li
             %a{:href => "/users/new"} Register
-      - if session[:id] && session[:id] == 2 #so brittle! won't allow any other Admin with this check ...
+      - if is_admin? #if session[:id] && session[:id] == 2 #so brittle! won't allow any other Admin with this check ...
         %ul.nav.nav-pills.nav-stacked
           %li
             = link_to "Manage Inventory", admin_items_path

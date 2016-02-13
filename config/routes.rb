@@ -1,3 +1,4 @@
+# Refactor notes: should all rouates exist for all of these resources?
 Rails.application.routes.draw do
 
   get 'sessions/new'
