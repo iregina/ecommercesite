@@ -1,0 +1,14 @@
+= link_to 'Back to Home Page', items_path
+
+%h1 This Is Your Stupendous Shopping Cart
+
+= @order.user.username
+
+- @order.purchased_items.each do |purchased_item|
+  %p
+    Item: #{purchased_item.item.title}
+    %p
+      %p
+        Quantity #{purchased_item.quantity}
+      %p
+        Price: #{purchased_item.item.price}

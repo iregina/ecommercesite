@@ -43,21 +43,34 @@ Category.create!(name: "Candy")
   new_item = Item.create!(
     title: Faker::Commerce.product_name,
      price: Faker::Commerce.price,
-     description: Faker::Lorem.paragraph,
+     description: Faker::Lorem.paragraph(3),
      quantity: rand(1...20),
      user_id: 2,
      picture_link: Faker::Avatar.image(Faker::Name.first_name, "200x200"))
-
   new_item.categories << Category.find(rand(1...3))
   new_item.categories << Category.find(rand(4...7))
   new_item.categories << Category.find(rand(8...10))
+end
 
+3.times do
+  out_of_stock_item = Item.create!(
+    title: Faker::Commerce.product_name,
+     price: Faker::Commerce.price,
+     description: "This items should be out of stock by default. Don't get your hopes up, kid.",
+     quantity: 0,
+     user_id: 2,
+     picture_link: Faker::Avatar.image(Faker::Name.first_name, "200x200"))
+  out_of_stock_item.categories << Category.find(rand(1...3))
+  out_of_stock_item.categories << Category.find(rand(4...7))
+  out_of_stock_item.categories << Category.find(rand(8...10))
 end
 
 10.times do |i|
   category = Category.find(i+1)
   category.items << Item.find(rand(1...20))
 end
+
+
 
 
 

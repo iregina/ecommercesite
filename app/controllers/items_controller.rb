@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 # refactor with a partial
   def show
     @item = Item.find(params[:id])
+    @purchased_item = @item.purchased_items.build
   end
 end
 

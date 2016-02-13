@@ -4,6 +4,11 @@ module ApplicationHelper
     session[:id] = user.id
   end
 
+# call this method to bring up current open shopping cart
+  def current_shopping_cart
+    Order.where(user_id: current_user.id, complete: false).first_or_create
+  end
+
   def logged_in?
     session[:id] != nil
   end

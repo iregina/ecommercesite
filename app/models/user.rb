@@ -2,6 +2,8 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   has_many :items
+  has_many :orders
+
   validates :username, :email, :password_hash, { :presence => true }
   validates :email, { :uniqueness => true }
 

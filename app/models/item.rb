@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
 
   belongs_to :user
-  
+  has_many :purchased_items
+  has_many :orders, through: :purchased_items
   has_and_belongs_to_many :categories
 
   validates :title, :price, :description, :quantity, { :presence => true }
