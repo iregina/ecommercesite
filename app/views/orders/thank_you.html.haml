@@ -1,0 +1,22 @@
+
+%h1 Thank you so much!
+%h3 You have save our humble artist's workshop from repossession!
+
+%h5 While we recognize that we should render the following information with a partial, here are the details of your order:
+
+%p **********************************
+
+- @order.purchased_items.each do |purchased_item|
+  %p
+    Item: #{purchased_item.item.title}
+    %p
+      %p
+        Quantity #{purchased_item.quantity}
+      %p
+        Price: #{purchased_item.item.price}
+      %p ----------------------------------
+
+%h3
+  Total cost for this order: $#{@order.purchase_total}
+
+%p **********************************

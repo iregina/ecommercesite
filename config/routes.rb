@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  # get "/checkout", to: "orders#thank_you"
   put "/checkout", to: "orders#checkout"
 
   resources :categories, :only => [:show, :index]

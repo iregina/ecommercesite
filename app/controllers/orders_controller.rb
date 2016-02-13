@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   include ApplicationHelper
 
   def index
-    # @orders = Order.where _____
+    @orders = Order.where(complete: true)
   end
 
   def create
@@ -29,14 +29,11 @@ class OrdersController < ApplicationController
       flash[:error] = "Something went terribly wrong!"
       # "There is not enough in stock of one of the items you ordered (go figure out which one yourself), please edit the quantity in the shopping cart."
     end
-    redirect_to '/'
-    # redirect_to 'thank_you'
+    # redirect_to '/checkout'
+   render '/orders/thank_you'
     # redirect_to checkout_path
   end
 
-  # def thank_you
-
-  # end
 
 end
 

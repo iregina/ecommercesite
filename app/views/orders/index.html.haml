@@ -1,0 +1,20 @@
+
+%h1 Look at all the things you ordered before!
+%h3 (We should make each item link back to its Show page, and invite user to Buy Again)
+%h3 (Also: find a way to present timestamps all pretty)
+
+- @orders.each do |order|
+  %p **********************************
+  - order.purchased_items.each do |purchased_item|
+    %p
+      Item: #{purchased_item.item.title}
+      %p
+        %p
+          Quantity Ordered #{purchased_item.quantity}
+        %p
+          Price: #{purchased_item.item.price}
+        %p ----------------------------------
+  %p
+    Your Total for this order: $#{order.purchase_total}
+  %p
+    Order placed on: #{order.updated_at}
